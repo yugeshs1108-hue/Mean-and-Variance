@@ -48,11 +48,66 @@ It shows the distance of a random variable from its mean. It is calcualted as
 ![image](https://user-images.githubusercontent.com/103921593/229993174-5b67e57e-3e01-4ac4-9f83-410a932b22bf.png)
 
 # Program :
+Name: SANJAY SRISANTH V
+Register No: 212225040375
+import numpy as np
+
+# Read the data
+L = [int(i) for i in input("Enter the arrival data: ").split()]
+
+# Number of observations
+N = len(L)
+
+# Maximum arrival value
+M = max(L)
+
+# Find frequency of each value
+x = []
+f = []
+
+for i in range(M + 1):
+    count = 0
+    for j in range(N):
+        if L[j] == i:
+            count += 1
+
+    x.append(i)
+    f.append(count)
+
+# Total frequency
+Sf = np.sum(f)
+
+# Probability
+p = []
+
+for i in range(M + 1):
+    p.append(f[i] / Sf)
+
+# Mean
+mean = np.inner(x, p)
+
+# E(X^2)
+Ex2 = np.inner(np.square(x), p)
+
+# Variance
+var = Ex2 - mean ** 2
+
+# Standard deviation
+sd = np.sqrt(var)
+
+# Display results
+print(f"Mean arrival rate = {mean:.3f}")
+print(f"Variance of arrival from feeder = {var:.3f}")
+print(f"Standard deviation of arrival from feeder = {sd:.3f}")
 
 
 
 # Output : 
+Enter the arrival data: 12  9 8 6 32 9  
+Mean arrival rate = 12.667
+Variance of arrival from feeder = 77.889
+Standard deviation of arrival from feeder = 8.825
 
 # Results :
-The mean and variance of arrivals of objects from feeder using probability distribution are calculated.
+The mean and variance of arrivals of objects from feeder using probability distribution are calculated
 
